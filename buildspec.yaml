@@ -21,3 +21,4 @@ phases:
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo "###Connect to EKS####"
       - aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name ${EKS_CLUSTER}
+      - kubectl get pods -o wide
