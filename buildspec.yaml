@@ -19,6 +19,5 @@ phases:
     commands:
       - echo Build completed on `date`
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-  k8s_connection:
-    commands:
+      - echo "###Connect to EKS####"
       - aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name ${EKS_CLUSTER}
