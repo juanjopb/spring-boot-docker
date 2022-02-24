@@ -22,7 +22,7 @@ phases:
       - echo "========= Connect to EKS ============"
       - aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name ${EKS_CLUSTER}
       - echo "========== Assume role ======"
-      - CREDS=$(aws sts assume-role --role-arn arn:aws:iam::925900902386:role/EksCodeBuildKubectlRole --role-session-name "CodeBuild" --duration-seconds 1800)
+      - CREDS=$(aws sts assume-role --role-arn arn:aws:sts::925900902386:assumed-role/codebuild-SpringBootProject-service-role --role-session-name "CodeBuild" --duration-seconds 1800)
       - AWS_ACCESS_KEY_ID="$(echo $CREDS | jq -r '.Credentials.AccessKeyId')"
       - AWS_SECRET_ACCESS_KEY="$(echo $CREDS | jq -r '.Credentials.SecretAccessKey')"
       - AWS_SESSION_TOKEN="$(echo $CREDS | jq -r '.Credentials.SessionToken')"
