@@ -9,6 +9,13 @@ eksctl create iamserviceaccount \
     --override-existing-serviceaccounts
 
 
+####
+
+eksctl create iamidentitymapping \
+  --cluster sandbox-testing \
+  --arn arn:aws:iam::925900902386:role/service-role/codebuild-SpringBootProject-service-role \
+  --username ssouser:{{SessionName}}
+
 #### Deploy with Helm
 helm upgrade --install --debug spring-boot-chart . -f values.yaml
 
