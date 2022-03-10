@@ -7,3 +7,10 @@ eksctl create iamserviceaccount \
     --attach-policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess \
     --approve \
     --override-existing-serviceaccounts
+
+
+#### Deploy with Helm
+helm upgrade --install --debug spring-boot-chart . -f values.yaml
+
+#### Delete Deployment
+helm delete spring-boot-chart
