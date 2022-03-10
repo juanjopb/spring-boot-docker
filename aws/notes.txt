@@ -1,0 +1,9 @@
+##### eksctl to map serviceAccount with IamRole
+
+eksctl create iamserviceaccount \
+    --name iam-test \
+    --namespace default \
+    --cluster <EKSCluster> \
+    --attach-policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess \
+    --approve \
+    --override-existing-serviceaccounts
