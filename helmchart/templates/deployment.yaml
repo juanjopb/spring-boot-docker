@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "spring-boot.fullname" . }}
+  labels:
+    {{- include "spring-boot.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "spring-boot.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "spring-boot.fullname" . }}
+    spec:
+      serviceAccountName: {{ include "spring-boot.serviceAccountName" . }}
+      containers:
+      - image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        name: {{ include "spring-boot.fullname" . }}
